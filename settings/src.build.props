@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <IsPackable Condition="'$(OutputType)' == 'Library'">true<IsPackable>
+    <IsPackable Condition="'$(OutputType)' == 'Library'">true</IsPackable>
   </PropertyGroup>
 
 </Project>
