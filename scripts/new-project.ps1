@@ -159,7 +159,7 @@ function New-Project {
       }
     }
 
-    $ProjectFolder = New-Item -Path "$($OutputDirectory)\$($targetFolder)\$($ProjectName)" -ItemType Directory -Force
+    $ProjectFolder = New-Item -Path "$($targetFolder)\$($ProjectName)" -ItemType Directory -Force
 
     $createParameters = 'new', $projectSdk, '-n', $ProjectName, '-o', $ProjectFolder, '--force'
     if ($setFramework -eq $true) {
@@ -177,7 +177,7 @@ function New-Project {
       Set-Content -Path $ProjectReadMe -Value 'Please give the customer a brief introduction about this library, and how to use it.'
     }
 
-    dotnet sln $SolutionFile add -s "$($OutputDirectory)\$($targetFolder)" $ProjectFolder | Out-Null
+    dotnet sln $SolutionFile add -s "$($targetFolder)" $ProjectFolder | Out-Null
 
     if ($DisableTests -eq $false) {
       if ($DisableUnitTests -eq $false) {
