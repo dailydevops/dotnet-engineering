@@ -1,0 +1,11 @@
+# Banned APIs across the projects.
+# https://github.com/dotnet/roslyn-analyzers/blob/master/src/Microsoft.CodeAnalysis.BannedApiAnalyzers/BannedApiAnalyzers.Help.md
+# Syntax:
+# E:Event
+# M:Method
+# F:Field
+# P:Property
+# T:Type
+
+# Avoid Enum.HasFlag, performance reasons
+M:System.Enum.HasFlag(System.Enum); Causes two boxed values per call. Use bitwise expressions instead.

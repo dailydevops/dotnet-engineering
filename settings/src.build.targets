@@ -1,0 +1,18 @@
+<Project>
+
+  <PropertyGroup Label="Error Handling" Condition="'$(Configuration)' != 'Debug'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SolutionLicense Include="LICENSE" Condition="Exists('LICENSE')" />
+    <SolutionLicense Include="$(SolutionDir)LICENSE" Condition="@(SolutionLicense) == '' and Exists('$(SolutionDir)LICENSE')" />
+    <None Include="@(SolutionLicense)" Pack="true" PackagePath="" Visible="false" Condition="Exists(@(SolutionLicense))" />
+
+    <ProjectReadme Include="README.md" Condition="Exists('README')" />
+    <SolutionReadme Include="$(SolutionDir)README.md" Condition="@(ProjectReadme) == '' and @(SolutionReadme) == '' and Exists('$(SolutionDir)README.md')" />
+    <None Include="@(ProjectReadme)" Pack="true" PackagePath="" Visible="true" Condition="Exists(@(ProjectReadme))" />
+    <None Include="@(SolutionReadme)" Pack="true" PackagePath="" Visible="false" Condition="!Exists(@(ProjectReadme)) and Exists(@(SolutionReadme))" />
+  </ItemGroup>
+
+</Project>

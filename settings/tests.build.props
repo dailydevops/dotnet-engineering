@@ -1,0 +1,7 @@
+<Project>
+
+  <PropertyGroup>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+</Project>

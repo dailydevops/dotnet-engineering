@@ -1,0 +1,83 @@
+<Project>
+
+  <PropertyGroup>
+    <DisableCompatibility Condition="'$(DisableCompatibility)' != 'true'">false</DisableCompatibility>
+    <DisableNullableCompatibility Condition="'$(DisableNullableCompatibility)' != 'true'">false</DisableNullableCompatibility>
+    <CompatibilityCallerArgumentExpression Condition="'$(CompatibilityCallerArgumentExpression)' != 'true'">false</CompatibilityCallerArgumentExpression>
+    <CompatibilityRecord Condition="'$(CompatibilityRecord)' != 'true'">false</CompatibilityRecord>
+    <CompatibilityRange Condition="'$(CompatibilityRange)' != 'true'">false</CompatibilityRange>
+    <CompatibilitySkipLocalsInit Condition="'$(CompatibilitySkipLocalsInit)' != 'true'">false</CompatibilitySkipLocalsInit>
+    <CompatibilityStackTraceHidden Condition="'$(CompatibilityStackTraceHidden)' != 'true'">false</CompatibilityStackTraceHidden>
+    <CompatibilityStringSyntax Condition="'$(CompatibilityStringSyntax)' != 'true'">false</CompatibilityStringSyntax>
+  </PropertyGroup>
+
+  <Import
+    Condition="('$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1') and '$(DisableCompatibility)' == 'false' and '$(DisableNullableCompatibility)' == 'false'"
+    Project="$(DirEngineeringShared)Compatibility.Nullable\Compatibility.Nullable.projitems" />
+
+  <Import
+    Condition="('$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1') and '$(DisableCompatibility)' == 'false'"
+    Project="$(DirEngineeringShared)Compatibility.Platform\Compatibility.Platform.projitems" />
+
+  <Import
+    Condition="('$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1') and '$(DisableCompatibility)' == 'false'"
+    Project="$(DirEngineeringShared)Compatibility.ModuleInitializer\Compatibility.ModuleInitializer.projitems" />
+
+  <Import
+    Condition="'$(CompatibilityCallerArgumentExpression)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.CallerArgumentExpression\Compatibility.CallerArgumentExpression.projitems" />
+
+  <Import
+    Condition="'$(CompatibilityRecord)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.IsExternalInit\Compatibility.IsExternalInit.projitems" />
+
+  <Import
+    Condition="'$(CompatibilityRange)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.Range\Compatibility.Range.projitems" />
+
+  <Import
+    Condition="'$(CompatibilitySkipLocalsInit)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.SkipLocalsInit\Compatibility.SkipLocalsInit.projitems" />
+
+  <Import
+    Condition="'$(CompatibilityStackTraceHidden)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.StackTraceHidden\Compatibility.StackTraceHidden.projitems" />
+
+  <Import
+    Condition="'$(CompatibilityStringSyntax)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.StringSyntax\Compatibility.StringSyntax.projitems" />
+
+  <PropertyGroup Label="Automation - Copyright" Condition="'$(Copyright)' == ''">
+    <CopyrightYearStart Condition="'$(CopyrightYearStart)' == ''">$([System.DateTime]::Now.Year)</CopyrightYearStart>
+    <CopyrightYear>$([System.DateTime]::Now.Year)</CopyrightYear>
+    <Copyright Condition="'$(CopyrightYear)' > '$(CopyrightYearStart)'">Copyright @ $(Company) $(CopyrightYearStart) - $(CopyrightYear)</Copyright>
+    <Copyright Condition="'$(CopyrightYear)' == '$(CopyrightYearStart)'">Copyright @ $(Company) $(CopyrightYearStart)</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Properties correction">
+    <IsPackable Condition="'$(IsPackable)' != 'true'">false</IsPackable>
+    <IsTestProject Condition="'$(IsTestProject)' != 'true'">false</IsTestProject>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Build / Publish Settings" Condition="'$(IsCIBuild)' == 'true'">
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DisableBannedApiForConsole Condition="'$(DisableBannedApiForConsole)' != 'true'">false</DisableBannedApiForConsole>
+    <DisableBannedApiForPerformance Condition="'$(DisableBannedApiForPerformance)' != 'true'">false</DisableBannedApiForPerformance>
+    <DisableBannedApiForUTC Condition="'$(DisableBannedApiForUTC)' != 'true'">false</DisableBannedApiForUTC>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Support for Microsoft.CodeAnalysis.BannedApiAnalyzers -->
+    <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.txt" Visible="false" />
+    <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.Console.txt" Visible="false" Condition="'$(DisableBannedApiForConsole)' == 'false'" />
+    <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.Performance.txt" Visible="false" Condition="'$(DisableBannedApiForPerformance)' == 'false'" />
+    <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.UTC.txt" Visible="false" Condition="'$(DisableBannedApiForUTC)' == 'false'" />
+
+    <!-- Support for .editorconfig / https://EditorConfig.org -->
+    <EditorConfigFiles Include="$(DirEngineeringConfigurations)global.editorconfig" Visible="false" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,62 @@
+<Project>
+
+  <PropertyGroup Label="Prepare Directories">
+    <DirEngineeringConfigurations>$([MSBuild]::NormalizeDirectory('$(DirEngineering)', 'configurations'))</DirEngineeringConfigurations>
+    <DirEngineeringShared>$([MSBuild]::NormalizeDirectory('$(DirEngineering)', 'shared'))</DirEngineeringShared>
+  </PropertyGroup>
+
+  <PropertyGroup Label="General">
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+
+    <LangVersion>latest</LangVersion>
+    <WarningLevel>5</WarningLevel>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1573;1591;1712;IDE0090;CA2252;CA1014;</NoWarn>
+
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>All</AnalysisMode>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <ReportAnalyzer>true</ReportAnalyzer>
+    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+    <_SkipUpgradeNetAnalyzersNuGetWarning>true</_SkipUpgradeNetAnalyzersNuGetWarning>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+
+    <CheckEolTargetFramework Condition="'$(Configuration)' == 'Debug'">false</CheckEolTargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Language Configuration">
+    <NeutralLanguage>en</NeutralLanguage>
+    <PreferredUILang>en</PreferredUILang>
+  </PropertyGroup>
+
+  <PropertyGroup Label="IsCIBuild">
+    <IsCIBuild>false</IsCIBuild>
+    <!-- Detect CI -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(CI)' == 'true'">true</IsCIBuild>
+    <!-- Detect Azure DevOps / TFS -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(TF_BUILD)' == 'true'">true</IsCIBuild>
+    <!-- Detect GitHub Actions -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(GITHUB_ACTIONS)' == 'true'">true</IsCIBuild>
+    <!-- Detect GitLab CI -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(GITLAB_CI)' == 'true'">true</IsCIBuild>
+    <!-- Detect TeamCity -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(TEAMCITY_VERSION)' != ''">true</IsCIBuild>
+    <!-- Detect Wrench -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(BUILD_COMMAND)' != ''">true</IsCIBuild>
+    <!-- Detect AppVeyor -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(APPVEYOR)' != ''">true</IsCIBuild>
+    <!-- Detect Travis -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(TRAVIS)' == 'true'">true</IsCIBuild>
+    <!-- Detect Jenkins -->
+    <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(JENKINS_URL)' != ''">true</IsCIBuild>
+  </PropertyGroup>
+
+</Project>
+
+

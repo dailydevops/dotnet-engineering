@@ -1,0 +1,28 @@
+<Project>
+
+  <ItemGroup Label="Test compability">
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Unit" />
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Integration" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Package Configuration">
+    <PackageId>$(MSBuildProjectName)</PackageId>
+    <Authors>NetEvolve,samtrion</Authors>
+    <Company>NetEvolve</Company>
+
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable Condition="'$(OutputType)' == 'Library'">true<IsPackable>
+  </PropertyGroup>
+
+</Project>

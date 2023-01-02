@@ -1,0 +1,12 @@
+# Banned APIs across the projects.
+# https://github.com/dotnet/roslyn-analyzers/blob/master/src/Microsoft.CodeAnalysis.BannedApiAnalyzers/BannedApiAnalyzers.Help.md
+# Syntax:
+# E:Event
+# M:Method
+# F:Field
+# P:Property
+# T:Type
+
+# Avoid Debug code in production
+M:System.Diagnostics.Debugger.Break(); This should not be used in production code as the resulting dialog is not meant to be shown to users.
+M:System.Diagnostics.Debugger.Launch(); This should not be used in production code as the resulting dialog is not meant to be shown to users.
