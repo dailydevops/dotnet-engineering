@@ -10,7 +10,7 @@
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
 
     <LangVersion>latest</LangVersion>
-    <WarningLevel>5</WarningLevel>
+    <WarningLevel>9999</WarningLevel>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
 
