@@ -28,6 +28,7 @@
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
 
     <CheckEolTargetFramework Condition="'$(Configuration)' == 'Debug'">false</CheckEolTargetFramework>
+    <SuppressTfmSupportBuildWarnings Condition="'$(Configuration)' == 'Release'">true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
   <PropertyGroup Label="Language Configuration">
