@@ -80,4 +80,15 @@
     <!-- Support for .editorconfig / https://EditorConfig.org -->
     <EditorConfigFiles Include="$(DirEngineeringConfigurations)global.editorconfig" Visible="false" />
   </ItemGroup>
+
+  <Target Name="RemoveSystemRuntimeFromRefPack"
+          BeforeTargets="_HandlePackageFileConflicts"
+          Condition="'@(Reference -> WithMetadataValue('NugetPackageId', 'System.Runtime.Experimental'))' != ''">
+    <ItemGroup>
+      <Reference
+        Remove="@(Reference)"
+        Condition="$([System.String]::Copy(%(Reference.Identity)).Contains('System.Runtime.dll')) and '%(Reference.NuGetPackageId)' == 'Microsoft.NETCore.App.Ref'" />
+    </ItemGroup>
+  </Target>
+
 </Project>
