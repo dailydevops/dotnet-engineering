@@ -15,4 +15,6 @@
     <None Include="@(_SolutionReadme)" Pack="true" PackagePath="" Visible="false" Condition="!Exists(@(_ProjectReadme)) and Exists(@(_SolutionReadme))" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('ValidatePackageProperties.targets', '$(DirEngineeringTargets)'))" />
+
 </Project>

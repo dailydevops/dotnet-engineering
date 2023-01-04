@@ -3,6 +3,7 @@
   <PropertyGroup Label="Prepare Directories">
     <DirEngineeringConfigurations>$([MSBuild]::NormalizeDirectory('$(DirEngineering)', 'configurations'))</DirEngineeringConfigurations>
     <DirEngineeringShared>$([MSBuild]::NormalizeDirectory('$(DirEngineering)', 'shared'))</DirEngineeringShared>
+    <DirEngineeringTargets>$([MSBuild]::NormalizeDirectory('$(DirEngineeringSettings)', 'targets'))</DirEngineeringTargets>
   </PropertyGroup>
 
   <PropertyGroup Label="General">
