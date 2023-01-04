@@ -5,14 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SolutionLicense Include="LICENSE" Condition="Exists('LICENSE')" />
-    <SolutionLicense Include="$(SolutionDir)LICENSE" Condition="@(SolutionLicense) == '' and Exists('$(SolutionDir)LICENSE')" />
-    <None Include="@(SolutionLicense)" Pack="true" PackagePath="" Visible="false" Condition="Exists(@(SolutionLicense))" />
+    <_SolutionLicense Include="LICENSE" Condition="Exists('LICENSE')" />
+    <_SolutionLicense Include="$(SolutionDir)LICENSE" Condition="@(_SolutionLicense) == '' and Exists('$(SolutionDir)LICENSE')" />
+    <None Include="@(_SolutionLicense)" Pack="true" PackagePath="" Visible="false" Condition="Exists(@(_SolutionLicense))" />
 
-    <ProjectReadme Include="README.md" Condition="Exists('README')" />
-    <SolutionReadme Include="$(SolutionDir)README.md" Condition="@(ProjectReadme) == '' and @(SolutionReadme) == '' and Exists('$(SolutionDir)README.md')" />
-    <None Include="@(ProjectReadme)" Pack="true" PackagePath="" Visible="true" Condition="Exists(@(ProjectReadme))" />
-    <None Include="@(SolutionReadme)" Pack="true" PackagePath="" Visible="false" Condition="!Exists(@(ProjectReadme)) and Exists(@(SolutionReadme))" />
+    <_ProjectReadme Include="README.md" Condition="Exists('README')" />
+    <_SolutionReadme Include="$(SolutionDir)README.md" Condition="@(_ProjectReadme) == '' and @(_SolutionReadme) == '' and Exists('$(SolutionDir)README.md')" />
+    <None Include="@(_ProjectReadme)" Pack="true" PackagePath="" Visible="true" Condition="Exists(@(_ProjectReadme))" />
+    <None Include="@(_SolutionReadme)" Pack="true" PackagePath="" Visible="false" Condition="!Exists(@(_ProjectReadme)) and Exists(@(_SolutionReadme))" />
   </ItemGroup>
 
 </Project>
