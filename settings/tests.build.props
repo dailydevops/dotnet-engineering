@@ -4,6 +4,7 @@
     <IsTestProject>true</IsTestProject>
     <IsPublishable>false</IsPublishable>
 
+    <NoWarn>$(NoWarn);CA1707</NoWarn>
   </PropertyGroup>
 
 </Project>
