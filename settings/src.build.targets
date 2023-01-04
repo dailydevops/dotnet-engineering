@@ -1,6 +1,6 @@
 <Project>
 
-  <PropertyGroup Label="Error Handling" Condition="'$(Configuration)' != 'Debug'">
+  <PropertyGroup Label="Error Handling" Condition="'$(Configuration)' == 'Release'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 

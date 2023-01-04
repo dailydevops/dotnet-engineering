@@ -101,6 +101,7 @@ internal sealed class DoesNotReturnIfAttribute : Attribute
 /// <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values.</summary>
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
 [ExcludeFromCodeCoverage]
+[SuppressMessage("Usage", "CA1019:Define accessors for attribute arguments", Justification = "Required only to ensure compatibility.")]
 internal sealed class MemberNotNullAttribute : Attribute
 {
   /// <summary>Initializes the attribute with a field or property member.</summary>
@@ -122,6 +123,7 @@ internal sealed class MemberNotNullAttribute : Attribute
 /// <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values when returning with the specified return value condition.</summary>
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
 [ExcludeFromCodeCoverage]
+[SuppressMessage("Usage", "CA1019:Define accessors for attribute arguments", Justification = "Required only to ensure compatibility.")]
 internal sealed class MemberNotNullWhenAttribute : Attribute
 {
   /// <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
