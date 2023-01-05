@@ -3,6 +3,7 @@
   <PropertyGroup>
     <DisableCompatibility Condition="'$(DisableCompatibility)' != 'true'">false</DisableCompatibility>
     <DisableNullableCompatibility Condition="'$(DisableNullableCompatibility)' != 'true'">false</DisableNullableCompatibility>
+
     <CompatibilityCallerArgumentExpression Condition="'$(CompatibilityCallerArgumentExpression)' != 'true'">false</CompatibilityCallerArgumentExpression>
     <CompatibilityRecord Condition="'$(CompatibilityRecord)' != 'true'">false</CompatibilityRecord>
     <CompatibilityRange Condition="'$(CompatibilityRange)' != 'true'">false</CompatibilityRange>
@@ -12,39 +13,39 @@
   </PropertyGroup>
 
   <Import
-    Condition="('$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1') and '$(DisableCompatibility)' == 'false' and '$(DisableNullableCompatibility)' == 'false'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(DisableNullableCompatibility)' == 'false'"
     Project="$(DirEngineeringShared)Compatibility.Nullable\Compatibility.Nullable.projitems" />
 
   <Import
-    Condition="('$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1') and '$(DisableCompatibility)' == 'false'"
+    Condition="'$(DisableCompatibility)' == 'false'"
     Project="$(DirEngineeringShared)Compatibility.Platform\Compatibility.Platform.projitems" />
 
   <Import
-    Condition="('$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1') and '$(DisableCompatibility)' == 'false'"
+    Condition="'$(DisableCompatibility)' == 'false'"
     Project="$(DirEngineeringShared)Compatibility.ModuleInitializer\Compatibility.ModuleInitializer.projitems" />
 
   <Import
-    Condition="'$(CompatibilityCallerArgumentExpression)' == 'true'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityCallerArgumentExpression)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.CallerArgumentExpression\Compatibility.CallerArgumentExpression.projitems" />
 
   <Import
-    Condition="'$(CompatibilityRecord)' == 'true'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityRecord)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.IsExternalInit\Compatibility.IsExternalInit.projitems" />
 
   <Import
-    Condition="'$(CompatibilityRange)' == 'true'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityRange)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.Range\Compatibility.Range.projitems" />
 
   <Import
-    Condition="'$(CompatibilitySkipLocalsInit)' == 'true'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilitySkipLocalsInit)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.SkipLocalsInit\Compatibility.SkipLocalsInit.projitems" />
 
   <Import
-    Condition="'$(CompatibilityStackTraceHidden)' == 'true'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityStackTraceHidden)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.StackTraceHidden\Compatibility.StackTraceHidden.projitems" />
 
   <Import
-    Condition="'$(CompatibilityStringSyntax)' == 'true'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityStringSyntax)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.StringSyntax\Compatibility.StringSyntax.projitems" />
 
   <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">

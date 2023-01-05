@@ -1,10 +1,10 @@
-#pragma warning disable
-#if NET5_0_OR_GREATER || DISABLE_SUPPORT_PLATFORM
-#elif NETSTANDARD2_0 || NETSTANDARD2_1 || NET45 || NET461 || NET472 || NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP3_1
+﻿#if NET5_0_OR_GREATER || DISABLE_SUPPORT_PLATFORM
+#elif NET47_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
 #nullable enable
+#pragma warning disable
 namespace System.Runtime.Versioning
 {
   using System.Diagnostics.CodeAnalysis;

@@ -1,4 +1,4 @@
-#if !NET5_0_OR_GREATER || NET48
+﻿#if !NET5_0_OR_GREATER || NET48
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
@@ -102,6 +102,7 @@ internal sealed class DoesNotReturnIfAttribute : Attribute
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
 [ExcludeFromCodeCoverage]
 [SuppressMessage("Usage", "CA1019:Define accessors for attribute arguments", Justification = "Required only to ensure compatibility.")]
+[SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression", Justification = "Required only to ensure compatibility.")]
 internal sealed class MemberNotNullAttribute : Attribute
 {
   /// <summary>Initializes the attribute with a field or property member.</summary>
@@ -124,6 +125,7 @@ internal sealed class MemberNotNullAttribute : Attribute
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
 [ExcludeFromCodeCoverage]
 [SuppressMessage("Usage", "CA1019:Define accessors for attribute arguments", Justification = "Required only to ensure compatibility.")]
+[SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression", Justification = "Required only to ensure compatibility.")]
 internal sealed class MemberNotNullWhenAttribute : Attribute
 {
   /// <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
