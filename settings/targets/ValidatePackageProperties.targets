@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <IsCrossTargetingProject Condition="$(TargetFrameworks) != ''">true</IsCrossTargetingProject>
+    <ElevateWarningsToError Condition="'$(Configuration)' == 'Release' and '$(TreatWarningsAsErrors)' == 'true'">true</ElevateWarningsToError>
   </PropertyGroup>
 
   <Target
@@ -9,41 +10,21 @@
     Condition="'$(IsCrossTargetingProject)' == '$(IsCrossTargetingBuild)' and '$(IsPackable)' == 'true'"
     BeforeTargets="DispatchToInnerBuilds;BeforeBuild">
 
-    <Warning
-      Code="NEP001"
-      Text="The package id must be provided."
-      File="$(MSBuildProjectFile)"
-      Condition="'$(PackageId)' == ''" />
+    <!-- If $(ElevateWarningsToError) is false, only Warnings will be raised. -->
+    <Warning Code="NEP001" Text="The package id must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(PackageId)' == ''" />
+    <Warning Code="NEP002" Text="The package title must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(Title)' == ''" />
+    <Warning Code="NEP003" Text="The package description must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(Description)' == ''" />
+    <Warning Code="NEP004" Text="The package tags must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(PackageTags)' == ''" />
+    <Warning Code="NEP005" Text="The package project url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(PackageProjectUrl)' == ''" />
+    <Warning Code="NEP006" Text="The package repository url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(RepositoryUrl)' == ''" />
 
-    <Warning
-      Code="NEP002"
-      Text="The package title must be provided."
-      File="$(MSBuildProjectFile)"
-      Condition="'$(Title)' == ''" />
-
-    <Warning
-      Code="NEP003"
-      Text="The package description must be provided."
-      File="$(MSBuildProjectFile)"
-      Condition="'$(Description)' == ''" />
-
-    <Warning
-      Code="NEP004"
-      Text="The package tags must be provided."
-      File="$(MSBuildProjectFile)"
-      Condition="'$(PackageTags)' == ''" />
-
-    <Warning
-      Code="NEP005"
-      Text="The package project url must be provided."
-      File="$(MSBuildProjectFile)"
-      Condition="'$(PackageProjectUrl)' == ''" />
-
-    <Warning
-      Code="NEP006"
-      Text="The package repository url must be provided."
-      File="$(MSBuildProjectFile)"
-      Condition="'$(RepositoryUrl)' == ''" />
+    <!-- If $(ElevateWarningsToError) is false, only Warnings will be raised. -->
+    <Error Code="NEP001" Text="The package id must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(PackageId)' == ''" />
+    <Error Code="NEP002" Text="The package title must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(Title)' == ''" />
+    <Error Code="NEP003" Text="The package description must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(Description)' == ''" />
+    <Error Code="NEP004" Text="The package tags must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(PackageTags)' == ''" />
+    <Error Code="NEP005" Text="The package project url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(PackageProjectUrl)' == ''" />
+    <Error Code="NEP006" Text="The package repository url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(RepositoryUrl)' == ''" />
 
   </Target>
 
