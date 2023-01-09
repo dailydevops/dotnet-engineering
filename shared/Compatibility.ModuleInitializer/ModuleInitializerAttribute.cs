@@ -10,7 +10,7 @@ using System.Diagnostics.CodeAnalysis;
 //     module's initializer.
 [AttributeUsage(AttributeTargets.Method, Inherited = false)]
 [ExcludeFromCodeCoverage]
-public sealed class ModuleInitializerAttribute : Attribute
+internal sealed class ModuleInitializerAttribute : Attribute
 {
     //
     // Summary:
