@@ -8,4 +8,8 @@
     <NoWarn>$(NoWarn);1591;CA1707</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="_snapshots\*.received.txt" />
+  </ItemGroup>
+
 </Project>
