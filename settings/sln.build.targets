@@ -83,5 +83,6 @@
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetPathOfFileAbove('RemoveSystemRuntimeFromRefPack.targets', '$(DirEngineeringTargets)'))" />
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('GeneratedContent.targets', '$(DirEngineeringTargets)'))" />
 
 </Project>
