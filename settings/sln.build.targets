@@ -4,6 +4,8 @@
     <DisableCompatibility Condition="'$(DisableCompatibility)' != 'true'">false</DisableCompatibility>
     <DisableNullableCompatibility Condition="'$(DisableNullableCompatibility)' != 'true'">false</DisableNullableCompatibility>
 
+    <CompatibilityPlatform Condition="'$(CompatibilityPlatform)' != 'true'">false</CompatibilityPlatform>
+    <CompatibilityModuleInitializer Condition="'$(CompatibilityModuleInitializer)' != 'true'">false</CompatibilityModuleInitializer>
     <CompatibilityCallerArgumentExpression Condition="'$(CompatibilityCallerArgumentExpression)' != 'true'">false</CompatibilityCallerArgumentExpression>
     <CompatibilityRecord Condition="'$(CompatibilityRecord)' != 'true'">false</CompatibilityRecord>
     <CompatibilityRange Condition="'$(CompatibilityRange)' != 'true'">false</CompatibilityRange>
@@ -17,11 +19,11 @@
     Project="$(DirEngineeringShared)Compatibility.Nullable\Compatibility.Nullable.projitems" />
 
   <Import
-    Condition="'$(DisableCompatibility)' == 'false'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityPlatform)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.Platform\Compatibility.Platform.projitems" />
 
   <Import
-    Condition="'$(DisableCompatibility)' == 'false'"
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityModuleInitializer)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.ModuleInitializer\Compatibility.ModuleInitializer.projitems" />
 
   <Import
