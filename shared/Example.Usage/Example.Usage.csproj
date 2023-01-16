@@ -28,6 +28,7 @@
     <CompatibilitySkipLocalsInit>true</CompatibilitySkipLocalsInit>
     <CompatibilityStackTraceHidden>true</CompatibilityStackTraceHidden>
     <CompatibilityStringSyntax>true</CompatibilityStringSyntax>
+    <CompatibilityRequiredMember>true</CompatibilityRequiredMember>
   </PropertyGroup>
 
 </Project>

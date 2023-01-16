@@ -12,6 +12,7 @@
     <CompatibilitySkipLocalsInit Condition="'$(CompatibilitySkipLocalsInit)' != 'true'">false</CompatibilitySkipLocalsInit>
     <CompatibilityStackTraceHidden Condition="'$(CompatibilityStackTraceHidden)' != 'true'">false</CompatibilityStackTraceHidden>
     <CompatibilityStringSyntax Condition="'$(CompatibilityStringSyntax)' != 'true'">false</CompatibilityStringSyntax>
+    <CompatibilityRequiredMember Condition="'$(CompatibilityRequiredMember)' != 'true'">false</CompatibilityRequiredMember>
   </PropertyGroup>
 
   <Import
@@ -37,6 +38,10 @@
   <Import
     Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityRange)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.Range\Compatibility.Range.projitems" />
+
+  <Import
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityRequiredMember)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.RequiredMember\Compatibility.RequiredMember.projitems" />
 
   <Import
     Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilitySkipLocalsInit)' == 'true'"
