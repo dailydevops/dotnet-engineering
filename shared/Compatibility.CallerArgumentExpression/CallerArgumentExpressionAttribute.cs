@@ -9,6 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 
 [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class CallerArgumentExpressionAttribute : Attribute
 {
     public CallerArgumentExpressionAttribute(string parameterName) => ParameterName = parameterName;

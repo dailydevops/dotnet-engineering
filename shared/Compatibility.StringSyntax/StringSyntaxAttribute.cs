@@ -4,6 +4,8 @@
 
 namespace System.Diagnostics.CodeAnalysis;
 
+using System.Runtime.CompilerServices;
+
 /// <summary>Specifies the syntax used in a string.</summary>
 [AttributeUsage(
     AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property,
@@ -11,6 +13,7 @@ namespace System.Diagnostics.CodeAnalysis;
     Inherited = false
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class StringSyntaxAttribute : Attribute
 {
     /// <summary>Initializes the <see cref="StringSyntaxAttribute"/> with the identifier of the syntax used.</summary>

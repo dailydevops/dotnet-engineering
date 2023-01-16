@@ -4,6 +4,8 @@
 
 namespace System.Diagnostics.CodeAnalysis;
 
+using System.Runtime.CompilerServices;
+
 // These attributes already shipped with .NET Core 3.1 in System.Runtime
 #if !NETCOREAPP3_0 && !NETCOREAPP3_1 && !NETSTANDARD2_1
 /// <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
@@ -12,6 +14,7 @@ namespace System.Diagnostics.CodeAnalysis;
     Inherited = false
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class AllowNullAttribute : Attribute { }
 
 /// <summary>Specifies that null is disallowed as an input even if the corresponding type allows it.</summary>
@@ -20,6 +23,7 @@ internal sealed class AllowNullAttribute : Attribute { }
     Inherited = false
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class DisallowNullAttribute : Attribute { }
 
 /// <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
@@ -31,6 +35,7 @@ internal sealed class DisallowNullAttribute : Attribute { }
     Inherited = false
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class MaybeNullAttribute : Attribute { }
 
 /// <summary>Specifies that an output will not be null even if the corresponding type allows it. Specifies that an input argument was not null when the call returns.</summary>
@@ -42,11 +47,13 @@ internal sealed class MaybeNullAttribute : Attribute { }
     Inherited = false
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class NotNullAttribute : Attribute { }
 
 /// <summary>Specifies that when a method returns <see cref="ReturnValue"/>, the parameter may be null even if the corresponding type disallows it.</summary>
 [AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class MaybeNullWhenAttribute : Attribute
 {
     /// <summary>Initializes the attribute with the specified return value condition.</summary>
@@ -62,6 +69,7 @@ internal sealed class MaybeNullWhenAttribute : Attribute
 /// <summary>Specifies that when a method returns <see cref="ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
 [AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class NotNullWhenAttribute : Attribute
 {
     /// <summary>Initializes the attribute with the specified return value condition.</summary>
@@ -81,6 +89,7 @@ internal sealed class NotNullWhenAttribute : Attribute
     Inherited = false
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class NotNullIfNotNullAttribute : Attribute
 {
     /// <summary>Initializes the attribute with the associated parameter name.</summary>
@@ -96,11 +105,13 @@ internal sealed class NotNullIfNotNullAttribute : Attribute
 /// <summary>Applied to a method that will never return under any circumstance.</summary>
 [AttributeUsage(AttributeTargets.Method, Inherited = false)]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class DoesNotReturnAttribute : Attribute { }
 
 /// <summary>Specifies that the method will not return if the associated Boolean parameter is passed the specified value.</summary>
 [AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class DoesNotReturnIfAttribute : Attribute
 {
     /// <summary>Initializes the attribute with the specified parameter value.</summary>
@@ -122,6 +133,7 @@ internal sealed class DoesNotReturnIfAttribute : Attribute
     AllowMultiple = true
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 [SuppressMessage(
     "Usage",
     "CA1019:Define accessors for attribute arguments",
@@ -157,6 +169,7 @@ internal sealed class MemberNotNullAttribute : Attribute
     AllowMultiple = true
 )]
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 [SuppressMessage(
     "Usage",
     "CA1019:Define accessors for attribute arguments",

@@ -17,6 +17,7 @@ namespace System
     /// </remarks>
     [Runtime.InteropServices.StructLayout(Runtime.InteropServices.LayoutKind.Auto)]
     [ExcludeFromCodeCoverage]
+    [CompilerGenerated]
     internal readonly struct Index : IEquatable<Index>
     {
         private readonly int _value;
@@ -157,6 +158,7 @@ namespace System
     /// </remarks>
     [Runtime.InteropServices.StructLayout(Runtime.InteropServices.LayoutKind.Auto)]
     [ExcludeFromCodeCoverage]
+    [CompilerGenerated]
     internal readonly struct Range : IEquatable<Range>
     {
         /// <summary>Represent the inclusive start index of the Range.</summary>
@@ -241,6 +243,7 @@ namespace System
 namespace System.Runtime.CompilerServices
 {
     [ExcludeFromCodeCoverage]
+    [CompilerGenerated]
     internal static class RuntimeHelpers
     {
         /// <summary>
