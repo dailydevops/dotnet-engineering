@@ -151,3 +151,6 @@ csharp_prefer_simple_using_statement                        = false : suggestion
 csharp_indent_labels                                        = one_less_than_current
 csharp_style_expression_bodied_lambdas                      = true : silent
 csharp_style_expression_bodied_local_functions              = false : silent
+
+# Use Compound assignment
+dotnet_style_prefer_compound_assignment                     = false
