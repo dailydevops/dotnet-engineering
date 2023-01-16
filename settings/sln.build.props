@@ -66,6 +66,7 @@
   </ItemGroup>
 
   <PropertyGroup>
+    <!-- TODO: Remove, when https://github.com/belav/csharpier/pull/797 is merged -->
     <CSharpier_FrameworkVersion>net7.0</CSharpier_FrameworkVersion>
   </PropertyGroup>
 
