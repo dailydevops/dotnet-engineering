@@ -65,6 +65,10 @@
     </AssemblyAttribute>
   </ItemGroup>
 
+  <PropertyGroup>
+    <CSharpier_FrameworkVersion>net7.0</CSharpier_FrameworkVersion>
+  </PropertyGroup>
+
 </Project>
 
 
