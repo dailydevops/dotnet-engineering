@@ -21,6 +21,8 @@
     <StartupObject>Example.Usage.ProgramWithModuleInitializer</StartupObject>
 
     <CompatibilityCallerArgumentExpression>true</CompatibilityCallerArgumentExpression>
+    <CompatibilityModuleInitializer>true</CompatibilityModuleInitializer>
+    <CompatibilityPlatform>true</CompatibilityPlatform>
     <CompatibilityRecord>true</CompatibilityRecord>
     <CompatibilityRange>true</CompatibilityRange>
     <CompatibilitySkipLocalsInit>true</CompatibilitySkipLocalsInit>

@@ -6,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 [StackTraceHidden]
 internal sealed class ProgramWithModuleInitializer
 {

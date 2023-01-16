@@ -8,11 +8,13 @@
 namespace System.Runtime.Versioning
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// Base type for all platform-specific API attributes.
     /// </summary>
     [ExcludeFromCodeCoverage]
+    [CompilerGenerated]
 #if SYSTEM_PRIVATE_CORELIB
     public
 #else
@@ -33,6 +35,7 @@ namespace System.Runtime.Versioning
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
     [ExcludeFromCodeCoverage]
+    [CompilerGenerated]
 #if SYSTEM_PRIVATE_CORELIB
     public
 #else
@@ -68,6 +71,7 @@ namespace System.Runtime.Versioning
         Inherited = false
     )]
     [ExcludeFromCodeCoverage]
+    [CompilerGenerated]
 #if SYSTEM_PRIVATE_CORELIB
     public
 #else
@@ -100,6 +104,7 @@ namespace System.Runtime.Versioning
         Inherited = false
     )]
     [ExcludeFromCodeCoverage]
+    [CompilerGenerated]
 #if SYSTEM_PRIVATE_CORELIB
     public
 #else

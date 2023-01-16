@@ -2,10 +2,11 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics;
-using System;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 [ExcludeFromCodeCoverage]
+[CompilerGenerated]
 [StackTraceHidden]
 public static class RecordTests
 {

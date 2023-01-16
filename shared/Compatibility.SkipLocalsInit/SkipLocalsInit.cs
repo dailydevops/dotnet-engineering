@@ -2,6 +2,8 @@
 #elif NET47 || NET471 || NET472 || NET48 || NETFRAMEWORK || NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP2_2 || NETCOREAPP3_0 || NETCOREAPP3_1 || NETSTANDARD2_0 || NETSTANDARD2_1 || NETSTANDARD
 namespace System.Runtime.CompilerServices;
 
+using System.Diagnostics.CodeAnalysis;
+
 [AttributeUsage(
     AttributeTargets.Module
         | AttributeTargets.Class
@@ -13,6 +15,8 @@ namespace System.Runtime.CompilerServices;
         | AttributeTargets.Event,
     Inherited = false
 )]
+[ExcludeFromCodeCoverage]
+[CompilerGenerated]
 internal sealed class SkipLocalsInitAttribute : Attribute
 {
     public SkipLocalsInitAttribute() { }
