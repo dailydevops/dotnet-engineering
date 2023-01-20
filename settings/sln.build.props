@@ -35,7 +35,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <NoWarn>$(NoWarn);CA1810;</NoWarn>
+    <NoWarn>$(NoWarn);CA1810;CA1031;</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Label="Language Configuration">
