@@ -17,6 +17,8 @@
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
+    <Features>strict</Features>
+
     <AnalysisLevel>latest</AnalysisLevel>
     <AnalysisMode>All</AnalysisMode>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
