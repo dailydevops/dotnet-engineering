@@ -1,14 +1,18 @@
 <Project>
 
-  <PropertyGroup Condition="'$(Configuration)' != 'Release'">
-      <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-      <GeneratedFolder>Generated</GeneratedFolder>
-      <CompilerGeneratedFilesOutputPath>$(GeneratedFolder)\$(TargetFramework)</CompilerGeneratedFilesOutputPath>
+  <PropertyGroup>
+    <GeneratedFolder>Generated</GeneratedFolder>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(Configuration)' != 'Release'">
-      <Compile Remove="$(GeneratedFolder)/**/*.cs" />
-      <None Include="$(GeneratedFolder)/**/*.cs" />
+  <PropertyGroup>
+    <EmitCompilerGeneratedFiles>false</EmitCompilerGeneratedFiles>
+    <EmitCompilerGeneratedFiles Condition="'$(Configuration)' != 'Release'">true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(GeneratedFolder)\$(TargetFramework)</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="$(GeneratedFolder)/**/*.cs" />
+    <None Include="$(GeneratedFolder)/**/*.cs" />
   </ItemGroup>
 
 </Project>
