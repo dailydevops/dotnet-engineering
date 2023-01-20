@@ -34,6 +34,10 @@
     <SuppressTfmSupportBuildWarnings Condition="'$(Configuration)' == 'Release'">true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);CA1810;</NoWarn>
+  </PropertyGroup>
+
   <PropertyGroup Label="Language Configuration">
     <NeutralLanguage>en</NeutralLanguage>
     <PreferredUILang>en</PreferredUILang>
