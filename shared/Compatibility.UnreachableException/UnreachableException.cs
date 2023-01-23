@@ -5,10 +5,15 @@
 
 namespace System.Diagnostics;
 
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+
 /// <summary>
 /// Exception thrown when the program executes an instruction that was thought to be unreachable.
 /// </summary>
 [Serializable]
+[CompilerGenerated]
+[ExcludeFromCodeCoverage]
 public sealed class UnreachableException : Exception
 {
     /// <summary>
