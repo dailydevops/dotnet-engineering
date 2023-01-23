@@ -1,5 +1,6 @@
-﻿#if NET5_0 || NET6_0 || NET7_0
-#elif NET47 || NET471 || NET472 || NET48 || NETFRAMEWORK || NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP2_2 || NETCOREAPP3_0 || NETCOREAPP3_1 || NETSTANDARD2_0 || NETSTANDARD2_1
+﻿#if NET5_0_OR_GREATER
+[assembly: System.Runtime.CompilerServices.TypeForwardedTo(typeof(System.Runtime.CompilerServices.ModuleInitializerAttribute))]
+#elif NET47_OR_GREATER || NETFRAMEWORK || NETCOREAPP2_0_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NETSTANDARD2_1
 namespace System.Runtime.CompilerServices;
 
 using System.Diagnostics.CodeAnalysis;

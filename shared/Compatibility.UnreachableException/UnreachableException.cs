@@ -9,9 +9,7 @@ namespace System.Diagnostics;
 /// <summary>
 /// Exception thrown when the program executes an instruction that was thought to be unreachable.
 /// </summary>
-#if NET472
 [Serializable]
-#endif
 public sealed class UnreachableException : Exception
 {
     /// <summary>
@@ -44,10 +42,9 @@ public sealed class UnreachableException : Exception
     {
     }
 
-#if NET472
+    /// <inheritdoc />
     private UnreachableException(Runtime.Serialization.SerializationInfo serializationInfo, Runtime.Serialization.StreamingContext streamingContext) : base(serializationInfo, streamingContext)
     {
     }
-#endif
 }
 #endif

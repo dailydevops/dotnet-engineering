@@ -17,7 +17,7 @@ public static class RecordTests
         return result[1..];
     }
 
-    public static async Task<string> Test(this string value)
+    public static async Task<string> TestAsync(this string value)
     {
         await Task.Yield();
         return value;

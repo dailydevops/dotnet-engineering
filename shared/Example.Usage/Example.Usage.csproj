@@ -14,6 +14,7 @@
       net6.0;
       net7.0
     </TargetFrameworks>
+    <NoWarn>CS1591;CA1812</NoWarn>
 
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
 
