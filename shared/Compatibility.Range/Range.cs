@@ -1,5 +1,4 @@
 ﻿#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
-[assembly: System.Runtime.CompilerServices.TypeForwardedTo(typeof(System.Range))]
 #elif NET47_OR_GREATER || NETSTANDARD2_0
 #pragma warning disable
 

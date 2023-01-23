@@ -1,5 +1,4 @@
 ﻿#if NET5_0_OR_GREATER
-[assembly: System.Runtime.CompilerServices.TypeForwardedTo(typeof(System.Runtime.CompilerServices.ModuleInitializerAttribute))]
 #elif NET47_OR_GREATER || NETFRAMEWORK || NETCOREAPP2_0_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NETSTANDARD2_1
 namespace System.Runtime.CompilerServices;
 
