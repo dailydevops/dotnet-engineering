@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Compatibility.RequiredMember", "Compatibility.RequiredMember\Compatibility.RequiredMember.shproj", "{92FB28D6-76C0-4A95-8EE8-4BCD47DD0529}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Compatibility.UnreachableException", "Compatibility.UnreachableException\Compatibility.UnreachableException.shproj", "{1E2FCE57-7727-44F5-AA6E-D8E1A1A1C523}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Compatibility.IsExternalInit\Compatibility.IsExternalInit.projitems*{0e63554c-3545-426e-ab58-c9346f7687f1}*SharedItemsImports = 13
+		Compatibility.UnreachableException\Compatibility.UnreachableException.projitems*{1e2fce57-7727-44f5-aa6e-d8e1a1a1c523}*SharedItemsImports = 13
 		Compatibility.Platform\Compatibility.Platform.projitems*{1f3c88a2-5249-47aa-8e6b-b95f99d1a90b}*SharedItemsImports = 13
 		Compatibility.ModuleInitializer\Compatibility.ModuleInitializer.projitems*{2d97fc6e-46db-4e55-9e22-e926d44255e0}*SharedItemsImports = 13
 		Compatibility.StringSyntax\Compatibility.StringSyntax.projitems*{2fdd25ba-5855-4f93-b568-9921c45e6681}*SharedItemsImports = 13

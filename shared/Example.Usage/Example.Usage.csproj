@@ -16,7 +16,7 @@
     </TargetFrameworks>
 
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
-    
+
     <OutputType>Exe</OutputType>
     <StartupObject>Example.Usage.ProgramWithModuleInitializer</StartupObject>
 
@@ -29,6 +29,7 @@
     <CompatibilityStackTraceHidden>true</CompatibilityStackTraceHidden>
     <CompatibilityStringSyntax>true</CompatibilityStringSyntax>
     <CompatibilityRequiredMember>true</CompatibilityRequiredMember>
+    <CompatibilityUnreachableException>true</CompatibilityUnreachableException>
   </PropertyGroup>
 
 </Project>

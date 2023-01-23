@@ -13,6 +13,7 @@
     <CompatibilityStackTraceHidden Condition="'$(CompatibilityStackTraceHidden)' != 'true'">false</CompatibilityStackTraceHidden>
     <CompatibilityStringSyntax Condition="'$(CompatibilityStringSyntax)' != 'true'">false</CompatibilityStringSyntax>
     <CompatibilityRequiredMember Condition="'$(CompatibilityRequiredMember)' != 'true'">false</CompatibilityRequiredMember>
+    <CompatibilityUnreachableException Condition="'$(CompatibilityUnreachableException)' != 'true'">false</CompatibilityUnreachableException>
   </PropertyGroup>
 
   <Import
@@ -54,6 +55,10 @@
   <Import
     Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityStringSyntax)' == 'true'"
     Project="$(DirEngineeringShared)Compatibility.StringSyntax\Compatibility.StringSyntax.projitems" />
+
+  <Import
+    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityUnreachableException)' == 'true'"
+    Project="$(DirEngineeringShared)Compatibility.UnreachableException\Compatibility.UnreachableException.projitems" />
 
   <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">
     <CopyrightYearStart Condition="'$(CopyrightYearStart)' == ''">$([System.DateTime]::Now.Year)</CopyrightYearStart>
