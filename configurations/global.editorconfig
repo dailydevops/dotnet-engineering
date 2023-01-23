@@ -74,7 +74,7 @@ dotnet_naming_rule.abstract_class.style                     = abstract_class
 dotnet_naming_rule.abstract_class.symbols                   = abstract_class
 
 dotnet_naming_style.method_async.required_suffix            = Async
-dotnet_naming_style.method_async.capitalization             = camel_case
+dotnet_naming_style.method_async.capitalization             = pascal_case
 dotnet_naming_symbols.method_async.applicable_kinds         = method
 dotnet_naming_symbols.method_async.required_modifiers       = async
 dotnet_naming_rule.method_async.severity                    = warning
