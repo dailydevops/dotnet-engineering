@@ -123,6 +123,8 @@ csharp_style_throw_expression                               = false : error
 csharp_style_conditional_delegate_call                      = true : error
 
 # Newline settings
+csharp_indent_braces                                        = false
+csharp_open_brace_on_new_line                               = all
 csharp_new_line_before_open_brace                           = all
 csharp_new_line_before_else                                 = true
 csharp_new_line_before_catch                                = true
@@ -139,7 +141,15 @@ csharp_style_expression_bodied_indexers                     = true : warning
 csharp_style_expression_bodied_accessors                    = true : warning
 
 # Prefer Braces even for one line of code, because of
-csharp_prefer_braces                                        = true:error
+csharp_prefer_braces                                        = true : error
+csharp_type_declaration_braces                              = next_line
+csharp_invocable_declaration_braces                         = next_line
+csharp_anonymous_method_declaration_braces                  = next_line
+csharp_accessor_owner_declaration_braces                    = next_line
+csharp_accessor_declaration_braces                          = next_line
+csharp_case_block_braces                                    = next_line
+csharp_initializer_braces                                   = next_line
+csharp_other_braces                                         = next_line
 
 # Tuple Preferences
 csharp_style_deconstructed_variable_declaration             = true : warning
