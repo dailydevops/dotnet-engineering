@@ -117,12 +117,12 @@ function New-Project {
         $Framework = 'net6.0'
       }
       'BlazorServer' {
-        $projectSdk = 'blazorserver'
-        $additionalCreateParameters += '--use-program-main', '--no-restore'
+        $projectSdk = 'blazorserver-empty'
+        $additionalCreateParameters += '--no-restore'
       }
       'BlazorWasm' {
-        $projectSdk = 'blazorwasm'
-        $additionalCreateParameters += '--use-program-main', '--no-restore'
+        $projectSdk = 'blazorwasm-empty'
+        $additionalCreateParameters += '--no-restore'
       }
       'RazorLibrary' {
         $projectSdk = 'razorclasslib'
