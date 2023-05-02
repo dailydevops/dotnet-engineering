@@ -30,7 +30,7 @@
     <_SkipUpgradeNetAnalyzersNuGetWarning>true</_SkipUpgradeNetAnalyzersNuGetWarning>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
 
-    <CheckEolTargetFramework Condition="'$(Configuration)' == 'Debug'">false</CheckEolTargetFramework>
+    <CheckEolTargetFramework Condition="'$(Configuration)' == 'Release'">false</CheckEolTargetFramework>
     <SuppressTfmSupportBuildWarnings Condition="'$(Configuration)' == 'Release'">true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
