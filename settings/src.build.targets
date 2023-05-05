@@ -14,7 +14,7 @@
     <None Include="@(_ProjectReadme)" Pack="true" PackagePath="" Visible="true" Condition="Exists(@(_ProjectReadme))" />
     <None Include="@(_SolutionReadme)" Pack="true" PackagePath="" Visible="false" Condition="!Exists(@(_ProjectReadme)) and Exists(@(_SolutionReadme))" />
 
-    <None Include="$(DirEngineering)logo.png" Pack="true" Visible="true" PackagePath="\" />
+    <None Include="$(DirEngineering)logo.png" Pack="true" Visible="false" PackagePath="\" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetPathOfFileAbove('ValidatePackageProperties.targets', '$(DirEngineeringTargets)'))" />
