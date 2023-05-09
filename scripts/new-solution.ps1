@@ -21,9 +21,11 @@ function New-Solution {
     $solutionFilePath = Get-ChildItem -File -Path "$SolutionName.sln" | Resolve-Path -Relative
     $scriptNewProject = "$OutputDirectory\new-project.ps1"
     $scriptUpdateSolution = "$OutputDirectory\update-solution.ps1"
+    $scriptWorkflow = "$OutputDirectory\.github\workflows\cicd.yml"
 
     (Get-Content -Path $scriptNewProject) -replace '###SOLUTION###', $solutionFilePath | Set-Content -Path $scriptNewProject
     (Get-Content -Path $scriptUpdateSolution) -replace '###SOLUTION###', $solutionFilePath | Set-Content -Path $scriptUpdateSolution
+    (Get-Content -Path $scriptWorkflow) -replace '###SOLUTION###', $solutionFilePath | Set-Content -Path $scriptWorkflow
   }
 
   end {
