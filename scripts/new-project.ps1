@@ -153,7 +153,6 @@ function New-Project {
         $projectSdk = 'console'
         $ProjectName = "$($ProjectName).Benchmarks"
         $DisableTests = $true
-        $targetFolder = 'benchmarks'
         $additionalCreateParameters += '--use-program-main', '--no-restore'
         $additionalPackages += 'BenchmarkDotNet'
       }
