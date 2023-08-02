@@ -40,7 +40,11 @@ function New-Project {
     # Parameter help description
     [Parameter(Mandatory = $true)]
     [boolean]
-    $DisableIntegrationTests
+    $DisableIntegrationTests,
+
+    [Parameter(Mandatory = $true)]
+    [boolean]
+    $EnableProjectGrouping
   )
 
   begin {
@@ -94,6 +98,11 @@ function New-Project {
     $additionalPackages = @()
     $setFramework = $true
     $createProjectReadMe = $false
+    $projectGroup = ""
+
+    if ($EnableProjectGrouping -eq $true) {
+      $projectGroup = "src/$($ProjectName.Substring($ProjectName.IndexOf('.') + 1))/"
+    }
 
     switch ($ProjectType) {
       'Library' {
@@ -158,7 +167,7 @@ function New-Project {
       }
     }
 
-    $ProjectFolder = New-Item -Path "$($targetFolder)\$($ProjectName)" -ItemType Directory -Force
+    $ProjectFolder = New-Item -Path "$($projectGroup)$($targetFolder)\$($ProjectName)" -ItemType Directory -Force
 
     $createParameters = 'new', $projectSdk, '-n', $ProjectName, '-o', $ProjectFolder, '--force'
     if ($setFramework -eq $true) {
@@ -181,13 +190,13 @@ function New-Project {
     if ($DisableTests -eq $false) {
       if ($DisableUnitTests -eq $false) {
         $ProjectNameUnitTests = "$($ProjectName).Tests.Unit"
-        $ProjectFolderUnitTests = New-Item -Path "tests\$($ProjectNameUnitTests)" -ItemType Directory -Force
+        $ProjectFolderUnitTests = New-Item -Path "$($projectGroup)tests\$($ProjectNameUnitTests)" -ItemType Directory -Force
         New-TestProject $ProjectNameUnitTests $ProjectFolderUnitTests $ProjectFolder $Framework $SolutionFile
       }
 
       if ($DisableIntegrationTests -eq $false) {
         $ProjectNameIntegrationTests = "$($ProjectName).Tests.Integration"
-        $ProjectFolderIntegrationTests = New-Item -Path "tests\$($ProjectNameIntegrationTests)" -ItemType Directory -Force
+        $ProjectFolderIntegrationTests = New-Item -Path "$($projectGroup)tests\$($ProjectNameIntegrationTests)" -ItemType Directory -Force
         New-TestProject $ProjectNameIntegrationTests $ProjectFolderIntegrationTests $ProjectFolder $Framework $SolutionFile
       }
     }
