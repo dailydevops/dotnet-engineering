@@ -68,8 +68,9 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Properties correction">
-    <IsPackable Condition="'$(IsPackable)' != 'true'">false</IsPackable>
+    <IsTestProject Condition="'$(IsTestProject)' != 'true' and $(MSBuildProjectName.Contains('.Tests'))">true</IsTestProject>
     <IsTestProject Condition="'$(IsTestProject)' != 'true'">false</IsTestProject>
+    <IsPackable Condition="'$(IsPackable)' != 'true' or '$(IsTestProject)' == 'true'">false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Label="Build / Publish Settings" Condition="'$(IsCIBuild)' == 'true'">
