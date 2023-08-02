@@ -18,7 +18,7 @@ function New-Solution {
   process {
     dotnet new sln -n $SolutionName -o $OutputDirectory | Out-Null
 
-    $solutionFilePath = Get-ChildItem -File -Path "$SolutionName.sln" | Resolve-Path -Relative
+    $solutionFilePath = (Get-ChildItem -File -Path "$SolutionName.sln" | Resolve-Path -Relative).replace('\', '/')
     $scriptNewProject = "$OutputDirectory\new-project.ps1"
     $scriptUpdateSolution = "$OutputDirectory\update-solution.ps1"
     $scriptWorkflow = "$OutputDirectory\.github\workflows\cicd.yml"
