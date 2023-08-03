@@ -18,8 +18,8 @@ jobs:
     - uses: FantasticFiasco/action-update-license-year@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        prTitle: 'chore: Updated LICENSE ${{ steps.license.outputs.currentYear }} [skip ci]'
-        commitTitle: 'chore: Updated LICENSE ${{ steps.license.outputs.currentYear }}'
+        prTitle: 'chore: Updated LICENSE'
+        commitTitle: 'chore: Updated LICENSE [skip ci]'
       id: license
 
     - name: Merge PR
