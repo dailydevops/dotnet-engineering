@@ -36,7 +36,7 @@
 
   <PropertyGroup>
     <IsTestableProject>false</IsTestableProject>
-    <IsTestableProject Condition=" '$(MSBuildProjectName.Contains('.Tests.'))' == 'true' ">true</IsTestableProject>
+    <IsTestableProject Condition=" $(MSBuildProjectName.Contains('.Tests.')) ">true</IsTestableProject>
   </PropertyGroup>
 
   <PropertyGroup>
