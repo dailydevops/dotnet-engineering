@@ -35,6 +35,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <IsTestableProject>false</IsTestableProject>
+    <IsTestableProject Condition=" '$(MSBuildProjectName.Contains('.Tests.'))' == 'true' ">true</IsTestableProject>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <NoWarn>$(NoWarn);CA1810;CA1031;</NoWarn>
   </PropertyGroup>
 
