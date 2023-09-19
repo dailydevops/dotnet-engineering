@@ -32,6 +32,8 @@
 
     <CheckEolTargetFramework Condition="'$(Configuration)' == 'Release'">false</CheckEolTargetFramework>
     <SuppressTfmSupportBuildWarnings Condition="'$(Configuration)' == 'Release'">true</SuppressTfmSupportBuildWarnings>
+
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
   </PropertyGroup>
 
   <PropertyGroup>
