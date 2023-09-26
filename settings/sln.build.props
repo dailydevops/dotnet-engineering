@@ -45,6 +45,10 @@
     <NoWarn>$(NoWarn);CA1810;CA1031;</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup Label="Settings for test projects" Condition=" $(IsTestableProject) ">
+    <NoWarn>$(NoWarn);CS8604;CA2007;</NoWarn>
+  </PropertyGroup>
+
   <PropertyGroup Label="Language Configuration">
     <NeutralLanguage>en</NeutralLanguage>
     <PreferredUILang>en</PreferredUILang>
