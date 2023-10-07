@@ -1,64 +1,14 @@
 <Project>
+  <Target
+    Name="ValidateOldCompatibilityPackages"
+    BeforeTargets="DispatchToInnerBuilds;BeforeBuild">
 
-  <PropertyGroup>
-    <DisableCompatibility Condition="'$(DisableCompatibility)' != 'true'">false</DisableCompatibility>
-    <DisableNullableCompatibility Condition="'$(DisableNullableCompatibility)' != 'true'">false</DisableNullableCompatibility>
-
-    <CompatibilityPlatform Condition="'$(CompatibilityPlatform)' != 'true'">false</CompatibilityPlatform>
-    <CompatibilityModuleInitializer Condition="'$(CompatibilityModuleInitializer)' != 'true'">false</CompatibilityModuleInitializer>
-    <CompatibilityCallerArgumentExpression Condition="'$(CompatibilityCallerArgumentExpression)' != 'true'">false</CompatibilityCallerArgumentExpression>
-    <CompatibilityRecord Condition="'$(CompatibilityRecord)' != 'true'">false</CompatibilityRecord>
-    <CompatibilityRange Condition="'$(CompatibilityRange)' != 'true'">false</CompatibilityRange>
-    <CompatibilitySkipLocalsInit Condition="'$(CompatibilitySkipLocalsInit)' != 'true'">false</CompatibilitySkipLocalsInit>
-    <CompatibilityStackTraceHidden Condition="'$(CompatibilityStackTraceHidden)' != 'true'">false</CompatibilityStackTraceHidden>
-    <CompatibilityStringSyntax Condition="'$(CompatibilityStringSyntax)' != 'true'">false</CompatibilityStringSyntax>
-    <CompatibilityRequiredMember Condition="'$(CompatibilityRequiredMember)' != 'true'">false</CompatibilityRequiredMember>
-    <CompatibilityUnreachableException Condition="'$(CompatibilityUnreachableException)' != 'true'">false</CompatibilityUnreachableException>
-  </PropertyGroup>
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(DisableNullableCompatibility)' == 'false'"
-    Project="$(DirEngineeringShared)Compatibility.Nullable\Compatibility.Nullable.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityPlatform)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.Platform\Compatibility.Platform.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityModuleInitializer)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.ModuleInitializer\Compatibility.ModuleInitializer.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityCallerArgumentExpression)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.CallerArgumentExpression\Compatibility.CallerArgumentExpression.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityRecord)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.IsExternalInit\Compatibility.IsExternalInit.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityRange)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.Range\Compatibility.Range.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityRequiredMember)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.RequiredMember\Compatibility.RequiredMember.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilitySkipLocalsInit)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.SkipLocalsInit\Compatibility.SkipLocalsInit.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityStackTraceHidden)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.StackTraceHidden\Compatibility.StackTraceHidden.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityStringSyntax)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.StringSyntax\Compatibility.StringSyntax.projitems" />
-
-  <Import
-    Condition="'$(DisableCompatibility)' == 'false' and '$(CompatibilityUnreachableException)' == 'true'"
-    Project="$(DirEngineeringShared)Compatibility.UnreachableException\Compatibility.UnreachableException.projitems" />
+    <Error
+      Code="OLD001"
+      Text="Compatibility packages has been retired. Please use NuGet `Polyfill`."
+      File="$(MSBuildProjectFile)"
+      Condition="'$(DisableCompatibility)' != '' or '$(DisableNullableCompatibility)' != '' or '$(CompatibilityPlatform)' != '' or '$(CompatibilityModuleInitializer)' != '' or '$(CompatibilityCallerArgumentExpression)' != '' or '$(CompatibilityRecord)' != '' or '$(CompatibilityRange)' != '' or '$(CompatibilitySkipLocalsInit)' != '' or '$(CompatibilityStackTraceHidden)' != '' or '$(CompatibilityStringSyntax)' != '' or '$(CompatibilityRequiredMember)' != '' or '$(CompatibilityUnreachableException)' != ''" />
+  </Target>
 
   <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">
     <CopyrightYearStart Condition="'$(CopyrightYearStart)' == ''">$([System.DateTime]::Now.Year)</CopyrightYearStart>
