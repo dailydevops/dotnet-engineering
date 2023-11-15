@@ -3,7 +3,7 @@ is_global                                                   = true
 
 # .NET Code Style Settings
 # See https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
-dotnet_sort_system_directives_first                         = false
+dotnet_sort_system_directives_first                         = true
 dotnet_separate_import_directive_groups                     = false
 
 # Don't use 'this.'/'Me.' prefix for anything
