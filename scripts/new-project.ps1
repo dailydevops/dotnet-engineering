@@ -44,7 +44,11 @@ function New-Project {
 
     [Parameter(Mandatory = $true)]
     [boolean]
-    $EnableProjectGrouping
+    $EnableProjectGrouping,
+
+    [Parameter(Mandatory = $false)]
+    [boolean]
+    $EnableAdvProjectGrouping = $false
   )
 
   begin {
@@ -99,10 +103,6 @@ function New-Project {
     $setFramework = $true
     $createProjectReadMe = $false
     $projectGroup = ""
-
-    if ($EnableProjectGrouping -eq $true) {
-      $projectGroup = "src/$($ProjectName.Substring($ProjectName.IndexOf('.') + 1))/"
-    }
 
     switch ($ProjectType) {
       'Library' {
@@ -165,6 +165,19 @@ function New-Project {
         $additionalCreateParameters += '--use-program-main', '--no-restore'
         $additionalPackages += 'BenchmarkDotNet'
       }
+    }
+
+
+    if ($EnableProjectGrouping -eq $true) {
+      $projectGroupStart = $ProjectName.IndexOf('.')
+
+      if ($EnableAdvProjectGrouping -eq $true) {
+        $projectGroupEnd = $ProjectName.IndexOf('.', $projectGroupStart + 1)
+        $projectGroupName = $ProjectName.Substring($projectGroupStart + 1, $projectGroupEnd - $projectGroupStart)
+      } else {
+        $projectGroupName = $ProjectName.Substring($projectGroupStart + 1)
+      }
+      $projectGroup = "src/$($projectGroupName.ToLower())/"
     }
 
     $ProjectFolder = New-Item -Path "$($projectGroup)$($targetFolder)\$($ProjectName)" -ItemType Directory -Force
