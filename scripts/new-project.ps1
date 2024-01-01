@@ -77,7 +77,11 @@ function New-Project {
         # Parameter help description
         [Parameter(Mandatory = $true)]
         [String]
-        $solutionFile
+        $solutionFile,
+
+        [Parameter(Mandatory = $true)]
+        [string]
+        $projectGroupName
       )
 
       dotnet new xunit -n $projectName -o $folder -f $framework --no-restore --force | Out-Null
@@ -87,7 +91,12 @@ function New-Project {
       dotnet add $folder package --no-restore coverlet.msbuild | Out-Null
       dotnet add $folder package --no-restore Verify.Xunit | Out-Null
 
-      dotnet sln $solutionFile add -s 'tests' $folder | Out-Null
+      $targetFolder = 'tests'
+      if ($projectGroupName -ne "") {
+        $targetFolder = "src/$($projectGroupName.ToLower())/$($targetFolder)"
+      }
+
+      dotnet sln $solutionFile add -s $targetFolder $folder | Out-Null
     }
   }
 
@@ -103,6 +112,7 @@ function New-Project {
     $setFramework = $true
     $createProjectReadMe = $false
     $projectGroup = ""
+    $projectGroupName = ""
 
     switch ($ProjectType) {
       'Library' {
@@ -167,23 +177,26 @@ function New-Project {
       }
     }
 
+    $projectGroupStart = $ProjectName.IndexOf('.')
+    if ($EnableProjectGrouping -eq $true -and $projectGroupStart -ne -1) {
+      $projectGroupStart += 1
 
-    if ($EnableProjectGrouping -eq $true) {
-      $projectGroupStart = $ProjectName.IndexOf('.')
-
-      if ($EnableAdvProjectGrouping -eq $true) {
-        $projectGroupEnd = $ProjectName.IndexOf('.', $projectGroupStart + 1)
-        $projectGroupName = $ProjectName.Substring($projectGroupStart + 1, $projectGroupEnd - $projectGroupStart)
+      $projectGroupEnd = $ProjectName.IndexOf('.', $projectGroupStart)
+      if ($EnableAdvProjectGrouping -eq $true -and $projectGroupEnd -ne -1) {
+        $projectGroupName = $ProjectName.Substring($projectGroupStart, $projectGroupEnd - $projectGroupStart)
       } else {
-        $projectGroupName = $ProjectName.Substring($projectGroupStart + 1)
+        $projectGroupName = $ProjectName.Substring($projectGroupStart)
       }
       $projectGroup = "src/$($projectGroupName.ToLower())/"
     }
 
     $ProjectFolder = New-Item -Path "$($projectGroup)$($targetFolder)\$($ProjectName)" -ItemType Directory -Force
+    if ($projectGroupName -ne "") {
+      $targetFolder = "src/$($projectGroupName.ToLower())/$($targetFolder)"
+    }
 
     $createParameters = 'new', $projectSdk, '-n', $ProjectName, '-o', $ProjectFolder, '--force'
-    if ($setFramework -eq $true) {
+    if ($EnableAdvProjectGrouping -eq $true -and $setFramework -eq $true) {
       $createParameters += '-f', $Framework
     }
     & dotnet $createParameters $additionalCreateParameters | Out-Null
@@ -204,13 +217,13 @@ function New-Project {
       if ($DisableUnitTests -eq $false) {
         $ProjectNameUnitTests = "$($ProjectName).Tests.Unit"
         $ProjectFolderUnitTests = New-Item -Path "$($projectGroup)tests\$($ProjectNameUnitTests)" -ItemType Directory -Force
-        New-TestProject $ProjectNameUnitTests $ProjectFolderUnitTests $ProjectFolder $Framework $SolutionFile
+        New-TestProject $ProjectNameUnitTests $ProjectFolderUnitTests $ProjectFolder $Framework $SolutionFile $projectGroupName
       }
 
       if ($DisableIntegrationTests -eq $false) {
         $ProjectNameIntegrationTests = "$($ProjectName).Tests.Integration"
         $ProjectFolderIntegrationTests = New-Item -Path "$($projectGroup)tests\$($ProjectNameIntegrationTests)" -ItemType Directory -Force
-        New-TestProject $ProjectNameIntegrationTests $ProjectFolderIntegrationTests $ProjectFolder $Framework $SolutionFile
+        New-TestProject $ProjectNameIntegrationTests $ProjectFolderIntegrationTests $ProjectFolder $Framework $SolutionFile $projectGroupName
       }
     }
 
