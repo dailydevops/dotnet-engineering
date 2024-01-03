@@ -1,5 +1,9 @@
 <Project>
 
+  <PropertyGroup>
+    <DirectoryPackagesPropsPath>$([MSBuild]::NormalizePath('$(SolutionDir)', 'Directory.Packages.props'))</DirectoryPackagesPropsPath>
+  </PropertyGroup>
+
   <PropertyGroup Label="Prepare Directories">
     <DirEngineeringConfigurations>$([MSBuild]::NormalizeDirectory('$(DirEngineering)', 'configurations'))</DirEngineeringConfigurations>
     <DirEngineeringShared>$([MSBuild]::NormalizeDirectory('$(DirEngineering)', 'shared'))</DirEngineeringShared>
