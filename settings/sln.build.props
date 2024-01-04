@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <DirectoryPackagesPropsPath>$([MSBuild]::NormalizePath('$(SolutionDir)', 'Directory.Packages.props'))</DirectoryPackagesPropsPath>
+    <PackageOutputPath Condition=" '$(BuildingInsideVisualStudio)' == 'true' ">$([MSBuild]::NormalizePath('$(SolutionDir)', 'packages'))</PackageOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Label="Prepare Directories">
