@@ -93,7 +93,7 @@ function New-Project {
 
       $targetFolder = 'tests'
       if ($projectGroupName -ne "") {
-        $targetFolder = "src/$($projectGroupName.ToLower())/$($targetFolder)"
+        $targetFolder = "src/$($projectGroupName)/$($targetFolder)"
       }
 
       dotnet sln $solutionFile add -s $targetFolder $folder | Out-Null
@@ -187,12 +187,12 @@ function New-Project {
       } else {
         $projectGroupName = $ProjectName.Substring($projectGroupStart)
       }
-      $projectGroup = "src/$($projectGroupName.ToLower())/"
+      $projectGroup = "src/$($projectGroupName)/"
     }
 
     $ProjectFolder = New-Item -Path "$($projectGroup)$($targetFolder)\$($ProjectName)" -ItemType Directory -Force
     if ($projectGroupName -ne "") {
-      $targetFolder = "src/$($projectGroupName.ToLower())/$($targetFolder)"
+      $targetFolder = "src/$($projectGroupName)/$($targetFolder)"
     }
 
     $createParameters = 'new', $projectSdk, '-n', $ProjectName, '-o', $ProjectFolder, '--force'
