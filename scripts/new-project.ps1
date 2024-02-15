@@ -89,7 +89,6 @@ function New-Project {
       dotnet add $folder reference $sourceProject | Out-Null
       # Add additional packages
       dotnet add $folder package --no-restore coverlet.msbuild | Out-Null
-      dotnet add $folder package --no-restore Verify.Xunit | Out-Null
 
       $targetFolder = 'tests'
       if ($projectGroupName -ne "") {
