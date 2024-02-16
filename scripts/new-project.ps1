@@ -176,6 +176,10 @@ function New-Project {
       }
     }
 
+    if ([string]::IsNullOrWhiteSpace($Framework)) {
+      $Framework = 'net8.0'
+    }
+
     $projectGroupStart = $ProjectName.IndexOf('.')
     if ($EnableProjectGrouping -eq $true -and $projectGroupStart -ne -1) {
       $projectGroupStart += 1
@@ -195,7 +199,7 @@ function New-Project {
     }
 
     $createParameters = 'new', $projectSdk, '-n', $ProjectName, '-o', $ProjectFolder, '--force'
-    if ($EnableAdvProjectGrouping -eq $true -and $setFramework -eq $true) {
+    if ($EnableAdvProjectGrouping -eq $true -or $setFramework -eq $true) {
       $createParameters += '-f', $Framework
     }
     & dotnet $createParameters $additionalCreateParameters | Out-Null
