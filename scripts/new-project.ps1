@@ -48,7 +48,11 @@ function New-Project {
 
     [Parameter(Mandatory = $false)]
     [boolean]
-    $EnableAdvProjectGrouping = $false
+    $EnableAdvProjectGrouping = $false,
+
+    [Parameter(Mandatory = $false)]
+    [boolean]
+    $DisableArchitectureTests = $false
   )
 
   begin {
@@ -79,9 +83,9 @@ function New-Project {
         [String]
         $solutionFile,
 
-        [Parameter(Mandatory = $true)]
+        [Parameter(Mandatory = $false)]
         [string]
-        $projectGroupName
+        $projectGroupName = ""
       )
 
       dotnet new xunit -n $projectName -o $folder -f $framework --no-restore --force | Out-Null
@@ -227,6 +231,12 @@ function New-Project {
         $ProjectNameIntegrationTests = "$($ProjectName).Tests.Integration"
         $ProjectFolderIntegrationTests = New-Item -Path "$($projectGroup)tests\$($ProjectNameIntegrationTests)" -ItemType Directory -Force
         New-TestProject $ProjectNameIntegrationTests $ProjectFolderIntegrationTests $ProjectFolder $Framework $SolutionFile $projectGroupName
+      }
+
+      if ($DisableArchitectureTests -eq $false) {
+        $ProjectNameArchitectureTests = "$($ProjectName).Tests.Architecture"
+        $ProjectFolderArchitectureTests = New-Item -Path "$($projectGroup)tests\$($ProjectNameArchitectureTests)" -ItemType Directory -Force
+        New-TestProject $ProjectNameArchitectureTests $ProjectFolderArchitectureTests $ProjectFolder $Framework $SolutionFile $projectGroupName
       }
     }
 
