@@ -8,7 +8,7 @@
 
   <PropertyGroup Label="Package Configuration">
     <PackageId>$(MSBuildProjectName)</PackageId>
-    <Authors>NetEvolve,samtrion</Authors>
+    <Authors>NetEvolve, samtrion</Authors>
     <Company>NetEvolve</Company>
 
     <IncludeSymbols>true</IncludeSymbols>
