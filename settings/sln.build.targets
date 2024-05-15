@@ -1,4 +1,5 @@
 <Project>
+
   <Target
     Name="ValidateOldCompatibilityPackages"
     BeforeTargets="DispatchToInnerBuilds;BeforeBuild">
@@ -8,6 +9,18 @@
       Text="Compatibility packages has been retired. Please use NuGet `Polyfill`."
       File="$(MSBuildProjectFile)"
       Condition="'$(DisableCompatibility)' != '' or '$(DisableNullableCompatibility)' != '' or '$(CompatibilityPlatform)' != '' or '$(CompatibilityModuleInitializer)' != '' or '$(CompatibilityCallerArgumentExpression)' != '' or '$(CompatibilityRecord)' != '' or '$(CompatibilityRange)' != '' or '$(CompatibilitySkipLocalsInit)' != '' or '$(CompatibilityStackTraceHidden)' != '' or '$(CompatibilityStringSyntax)' != '' or '$(CompatibilityRequiredMember)' != '' or '$(CompatibilityUnreachableException)' != ''" />
+  </Target>
+
+  <Target
+    Name="EditorConfigReplacedWithPackage"
+    BeforeTargets="DispatchToInnerBuilds;BeforeBuild">
+
+    <Error
+      Code="OLD002"
+      Text="Missing NuGet package reference to `NetEvolve.EditorConfig`.
+`eng` folder is no longer supported as a source for `.editorconfig` files. Please use NuGet package `NetEvolve.EditorConfig`."
+      File="$(MSBuildProjectFile)"
+      Condition="'@(Reference -> WithMetadataValue('NugetPackageId', 'NetEvolve.EditorConfig'))' == '' and '$(IsTestProject)' != 'true'" />
   </Target>
 
   <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">
@@ -40,9 +53,6 @@
     <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.Console.txt" Visible="false" Condition="'$(DisableBannedApiForConsole)' == 'false'" />
     <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.Performance.txt" Visible="false" Condition="'$(DisableBannedApiForPerformance)' == 'false'" />
     <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.UTC.txt" Visible="false" Condition="'$(DisableBannedApiForUTC)' == 'false'" />
-
-    <!-- Support for .editorconfig / https://EditorConfig.org -->
-    <EditorConfigFiles Include="$(DirEngineeringConfigurations)global.editorconfig" Visible="false" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(RepositoryBranch)' == '' and '$(PublishRepositoryUrl)' == 'true' and '$(IsCIBuild)' == 'true'">
