@@ -17,6 +17,7 @@
     <Warning Code="NEP004" Text="The package tags must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(PackageTags)' == ''" />
     <Warning Code="NEP005" Text="The package project url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(PackageProjectUrl)' == ''" />
     <Warning Code="NEP006" Text="The package repository url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' != 'true' and '$(RepositoryUrl)' == ''" />
+    <Warning Code="NEP007" Text="Missing property `&lt;CopyrightYearStart&gt;`, which specifies the start of the copyright." Condition="'$(ElevateWarningsToError)' != 'true' and '$(CopyrightYearStart)' == ''" />
 
     <!-- If $(ElevateWarningsToError) is false, only Warnings will be raised. -->
     <Error Code="NEP001" Text="The package id must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(PackageId)' == ''" />
@@ -25,6 +26,7 @@
     <Error Code="NEP004" Text="The package tags must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(PackageTags)' == ''" />
     <Error Code="NEP005" Text="The package project url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(PackageProjectUrl)' == ''" />
     <Error Code="NEP006" Text="The package repository url must be provided." File="$(MSBuildProjectFile)" Condition="'$(ElevateWarningsToError)' == 'true' and '$(RepositoryUrl)' == ''" />
+    <Error Code="NEP007" Text="Missing property `&lt;CopyrightYearStart&gt;`, which specifies the start of the copyright." Condition="'$(ElevateWarningsToError)' == 'true' and '$(CopyrightYearStart)' == ''" />
 
   </Target>
 

@@ -1,4 +1,4 @@
-<Project>
+<Project TreatAsLocalProperty="_CopyrightYearStart">
   <Target
     Name="ValidateOldCompatibilityPackages"
     BeforeTargets="DispatchToInnerBuilds;BeforeBuild">
@@ -11,10 +11,11 @@
   </Target>
 
   <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">
-    <CopyrightYearStart Condition="'$(CopyrightYearStart)' == ''">$([System.DateTime]::Now.Year)</CopyrightYearStart>
+    <_CopyrightYearStart Condition="'$(CopyrightYearStart)' == ''">$([System.DateTime]::Now.Year)</_CopyrightYearStart>
+    <_CopyrightYearStart Condition="'$(CopyrightYearStart)' != ''">$(CopyrightYearStart)</_CopyrightYearStart>
     <CopyrightYear>$([System.DateTime]::Now.Year)</CopyrightYear>
-    <Copyright Condition="'$(CopyrightYear)' > '$(CopyrightYearStart)'">Copyright @ $(Company) $(CopyrightYearStart) - $(CopyrightYear)</Copyright>
-    <Copyright Condition="'$(CopyrightYear)' == '$(CopyrightYearStart)'">Copyright @ $(Company) $(CopyrightYearStart)</Copyright>
+    <Copyright Condition="'$(CopyrightYear)' > '$(_CopyrightYearStart)'">Copyright @ $(Company) $(_CopyrightYearStart) - $(CopyrightYear)</Copyright>
+    <Copyright Condition="'$(CopyrightYear)' == '$(_CopyrightYearStart)'">Copyright @ $(Company) $(_CopyrightYearStart)</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Label="Properties correction">
