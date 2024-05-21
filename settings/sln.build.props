@@ -1,6 +1,10 @@
 <Project>
 
   <PropertyGroup>
+    <DirectoryBuildPropsPath>$([MSBuild]::NormalizePath('$(SolutionDir)', 'Directory.Build.props'))</DirectoryBuildPropsPath>
+    <DirectoryBuildTargetsPath>$([MSBuild]::NormalizePath('$(SolutionDir)', 'Directory.Build.targets'))</DirectoryBuildTargetsPath>
+    <DirectorySolutionPropsPath>$([MSBuild]::NormalizePath('$(SolutionDir)', 'Directory.Solution.props'))</DirectorySolutionPropsPath>
+    <DirectorySolutionTargetsPath>$([MSBuild]::NormalizePath('$(SolutionDir)', 'Directory.Solution.targets'))</DirectorySolutionTargetsPath>
     <DirectoryPackagesPropsPath>$([MSBuild]::NormalizePath('$(SolutionDir)', 'Directory.Packages.props'))</DirectoryPackagesPropsPath>
     <PackageOutputPath Condition=" '$(BuildingInsideVisualStudio)' == 'true' ">$([MSBuild]::NormalizePath('$(SolutionDir)', 'packages'))</PackageOutputPath>
   </PropertyGroup>
