@@ -100,6 +100,8 @@
       https://www.jetbrains.com/help/space/automation-environment-variables.html#general
     -->
     <IsCIBuild Condition="'$(IsCIBuild)' == 'false' and '$(JB_SPACE_API_URL)' != ''">true</IsCIBuild>
+
+    <Deterministic Condition=" '$(IsCIBuild)' == 'true' ">true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
