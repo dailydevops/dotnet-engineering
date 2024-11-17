@@ -88,11 +88,15 @@ function New-Project {
         $projectGroupName = ""
       )
 
-      dotnet new xunit -n $projectName -o $folder -f $framework --no-restore --force | Out-Null
+      dotnet new classlib -n $projectName -o $folder -f $framework --no-restore --force | Out-Null
       # Add Project reference
       dotnet add $folder reference $sourceProject | Out-Null
       # Add additional packages
-      dotnet add $folder package --no-restore coverlet.msbuild | Out-Null
+      $additionalPackages = @('coverlet.msbuild', 'coverlet.collector', 'Microsoft.NET.Test.Sdk', 'xunit', 'xunit.runner.visualstudio', 'xunit.analyzers', 'NetEvolve.Extensions.XUnit')
+      foreach ($additionalPackage in $additionalPackages) {
+        $createPackageParameters = 'add', $folder, 'package', $additionalPackage
+        & dotnet $createPackageParameters | Out-Null
+      }
 
       $targetFolder = 'tests'
       if ($projectGroupName -ne "") {
@@ -151,25 +155,22 @@ function New-Project {
         $additionalCreateParameters += '--support-pages-and-views', '--no-restore'
       }
       'xUnit' {
-        $projectSdk = 'xunit'
         $DisableTests = $true
         $targetFolder = 'tests'
         $additionalCreateParameters += '--no-restore'
-        $additionalPackages += 'coverlet.msbuild', 'Verify.Xunit'
+        $additionalPackages += 'coverlet.collector', 'coverlet.msbuild', 'Verify.Xunit', 'Microsoft.NET.Test.Sdk', 'xunit', 'xunit.runner.visualstudio', 'xunit.analyzers', 'NetEvolve.Extensions.XUnit'
       }
       'NUnit' {
-        $projectSdk = 'nunit'
         $DisableTests = $true
         $targetFolder = 'tests'
         $additionalCreateParameters += '--no-restore'
-        $additionalPackages += 'coverlet.msbuild', 'Verify.Nunit'
+        $additionalPackages += 'coverlet.collector', 'coverlet.msbuild', 'Verify.Nunit', 'Microsoft.NET.Test.Sdk', 'NUnit', 'NUnit3TestAdapter', 'NUnit.Analyzers', 'NetEvolve.Extensions.NUnit'
       }
       'MSTest' {
-        $projectSdk = 'mstest'
         $DisableTests = $true
         $targetFolder = 'tests'
         $additionalCreateParameters += '--no-restore'
-        $additionalPackages += 'coverlet.msbuild', 'Verify.MSTest'
+        $additionalPackages += 'coverlet.collector', 'coverlet.msbuild', 'Verify.MSTest', 'Microsoft.NET.Test.Sdk', 'MSTest', 'NetEvolve.Extensions.MSTest'
       }
       'Benchmarks' {
         $projectSdk = 'console'
@@ -209,7 +210,7 @@ function New-Project {
     & dotnet $createParameters $additionalCreateParameters | Out-Null
 
     foreach ($additionalPackage in $additionalPackages) {
-      $createPackageParameters = 'add', $ProjectFolder, 'package', $additionalPackage, '--no-restore'
+      $createPackageParameters = 'add', $ProjectFolder, 'package', $additionalPackage
       & dotnet $createPackageParameters | Out-Null
     }
 
