@@ -1,4 +1,4 @@
-<Project TreatAsLocalProperty="_CopyrightYearStart">
+<Project TreatAsLocalProperty="_CopyrightYearStart;_NetEvolveDefaults">
   <Target
     Name="ValidateOldCompatibilityPackages"
     BeforeTargets="DispatchToInnerBuilds;BeforeBuild">
@@ -15,11 +15,15 @@
     BeforeTargets="DispatchToInnerBuilds;BeforeBuild"
     Condition=" $(MSBuildProjectName.StartsWith('NetEvolve.Defaults')) == 'false' ">
 
+    <ItemGroup>
+      <_NetEvolveDefaults Include="@(PackageReference)" Condition=" %(PackageReference.Identity) == 'NetEvolve.Defaults'"  />
+    </ItemGroup>
+
     <Error
       Code="OLD002"
-      Text="Missing NuGet package reference to `NetEvolve.Defaults`. This package will replace `eng` folder."
+      Text="Missing NuGet package reference to `NetEvolve.Defaults`. This package will replace `eng` folder. @(_NetEvolveDefaults->Count()) == 0"
       File="$(MSBuildProjectFile)"
-      Condition="'@(Reference -> WithMetadataValue('NugetPackageId', 'NetEvolve.Defaults'))' == ''" />
+      Condition="@(_NetEvolveDefaults->Count()) == 0" />
   </Target>
 
   <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">
