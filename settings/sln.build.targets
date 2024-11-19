@@ -10,6 +10,18 @@
       Condition="'$(DisableCompatibility)' != '' or '$(DisableNullableCompatibility)' != '' or '$(CompatibilityPlatform)' != '' or '$(CompatibilityModuleInitializer)' != '' or '$(CompatibilityCallerArgumentExpression)' != '' or '$(CompatibilityRecord)' != '' or '$(CompatibilityRange)' != '' or '$(CompatibilitySkipLocalsInit)' != '' or '$(CompatibilityStackTraceHidden)' != '' or '$(CompatibilityStringSyntax)' != '' or '$(CompatibilityRequiredMember)' != '' or '$(CompatibilityUnreachableException)' != ''" />
   </Target>
 
+  <Target
+    Name="DefaultsReplacedWithPackage"
+    BeforeTargets="DispatchToInnerBuilds;BeforeBuild"
+    Condition=" $(MSBuildProjectName.StartsWith('NetEvolve.Defaults')) == 'false' ">
+
+    <Error
+      Code="OLD002"
+      Text="Missing NuGet package reference to `NetEvolve.Defaults`. This package will replace `eng` folder."
+      File="$(MSBuildProjectFile)"
+      Condition="'@(Reference -> WithMetadataValue('NugetPackageId', 'NetEvolve.Defaults'))' == ''" />
+  </Target>
+
   <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">
     <_CopyrightYearStart Condition="'$(CopyrightYearStart)' == ''">$([System.DateTime]::Now.Year)</_CopyrightYearStart>
     <_CopyrightYearStart Condition="'$(CopyrightYearStart)' != ''">$(CopyrightYearStart)</_CopyrightYearStart>
