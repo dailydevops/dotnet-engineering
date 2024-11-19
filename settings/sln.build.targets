@@ -21,7 +21,7 @@
 
     <Error
       Code="OLD002"
-      Text="Missing NuGet package reference to `NetEvolve.Defaults`. This package will replace `eng` folder. @(_NetEvolveDefaults->Count()) == 0"
+      Text="Missing NuGet package reference to `NetEvolve.Defaults`. This package will replace `eng` folder."
       File="$(MSBuildProjectFile)"
       Condition="@(_NetEvolveDefaults->Count()) == 0" />
   </Target>
