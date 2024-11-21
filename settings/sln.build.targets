@@ -26,14 +26,6 @@
       Condition="@(_NetEvolveDefaults->Count()) == 0" />
   </Target>
 
-  <PropertyGroup Label="CopyrightAutomation" Condition="'$(Copyright)' == ''">
-    <_CopyrightYearStart Condition="'$(CopyrightYearStart)' == ''">$([System.DateTime]::Now.Year)</_CopyrightYearStart>
-    <_CopyrightYearStart Condition="'$(CopyrightYearStart)' != ''">$(CopyrightYearStart)</_CopyrightYearStart>
-    <CopyrightYear>$([System.DateTime]::Now.Year)</CopyrightYear>
-    <Copyright Condition="'$(CopyrightYear)' > '$(_CopyrightYearStart)'">Copyright @ $(Company) $(_CopyrightYearStart) - $(CopyrightYear)</Copyright>
-    <Copyright Condition="'$(CopyrightYear)' == '$(_CopyrightYearStart)'">Copyright @ $(Company) $(_CopyrightYearStart)</Copyright>
-  </PropertyGroup>
-
   <PropertyGroup Label="Properties correction">
     <IsTestProject Condition="'$(IsTestProject)' != 'true' and $(MSBuildProjectName.Contains('.Tests'))">true</IsTestProject>
     <IsTestProject Condition="'$(IsTestProject)' != 'true'">false</IsTestProject>
