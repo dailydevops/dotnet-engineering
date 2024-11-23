@@ -26,11 +26,7 @@
       Condition="@(_NetEvolveDefaults->Count()) == 0" />
   </Target>
 
-  <PropertyGroup Label="Properties correction">
-    <IsTestProject Condition="'$(IsTestProject)' != 'true' and $(MSBuildProjectName.Contains('.Tests'))">true</IsTestProject>
-    <IsTestProject Condition="'$(IsTestProject)' != 'true'">false</IsTestProject>
-    <IsPackable Condition="'$(IsPackable)' != 'true' or '$(IsTestProject)' == 'true'">false</IsPackable>
-  </PropertyGroup>
+
 
   <PropertyGroup Label="Build / Publish Settings" Condition="'$(IsCIBuild)' == 'true'">
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
@@ -49,9 +45,6 @@
     <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.Console.txt" Visible="false" Condition="'$(DisableBannedApiForConsole)' == 'false'" />
     <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.Performance.txt" Visible="false" Condition="'$(DisableBannedApiForPerformance)' == 'false'" />
     <AdditionalFiles Include="$(DirEngineeringConfigurations)BannedSymbols.UTC.txt" Visible="false" Condition="'$(DisableBannedApiForUTC)' == 'false'" />
-
-    <!-- Support for .editorconfig / https://EditorConfig.org -->
-    <EditorConfigFiles Include="$(DirEngineeringConfigurations)global.editorconfig" Visible="false" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(RepositoryBranch)' == '' and '$(PublishRepositoryUrl)' == 'true' and '$(IsCIBuild)' == 'true'">

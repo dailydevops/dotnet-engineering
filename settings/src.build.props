@@ -6,24 +6,6 @@
     <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Integration" />
   </ItemGroup>
 
-  <PropertyGroup Label="Package Configuration">
-    <PackageId>$(MSBuildProjectName)</PackageId>
-    <Authors>NetEvolve, samtrion</Authors>
-    <Company>NetEvolve</Company>
-
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageIcon>logo.png</PackageIcon>
-
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
-
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <IsTestProject>false</IsTestProject>

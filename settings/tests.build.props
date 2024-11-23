@@ -1,19 +1,2 @@
 <Project>
-
-  <PropertyGroup>
-    <IsTestProject>true</IsTestProject>
-    <IsPublishable>false</IsPublishable>
-    <IsPackable>false</IsPackable>
-
-    <NoWarn>$(NoWarn);1591;CA1707;IDE1006;VSTHRD200;CA1822;CA1515</NoWarn>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="_snapshots\*.received.txt" />
-  </ItemGroup>
-
 </Project>
