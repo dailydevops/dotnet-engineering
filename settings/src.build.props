@@ -1,14 +1,4 @@
 <Project>
 
-  <ItemGroup Label="Test compability">
-    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Architecture" />
-    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Unit" />
-    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Integration" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <IsPackable>true</IsPackable>
-    <IsTestProject>false</IsTestProject>
-  </PropertyGroup>
 
 </Project>
